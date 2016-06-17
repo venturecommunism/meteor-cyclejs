@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "rx": {
+      "version": "4.1.0",
+      "resolved": "https://registry.npmjs.org/rx/-/rx-4.1.0.tgz",
+      "from": "https://registry.npmjs.org/rx/-/rx-4.1.0.tgz"
+    }
+  }
+}
