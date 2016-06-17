@@ -1,0 +1,14 @@
+{
+  "name": "meteor-cycle-js",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "@cycle/core": "^6.0.3",
+    "@cycle/dom": "^9.4.0",
+    "@cycle/storage": "^2.0.3",
+    "meteor-node-stubs": "~0.2.0",
+    "rx": "^4.1.0"
+  }
+}
