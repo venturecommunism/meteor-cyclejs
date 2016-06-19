@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor'
 import { makeMongoDriver } from 'meteor/kriegslustig:cyclejs-mongo'
-import { State } from '/imports/collections'
+import { taskspending } from '/imports/collections'
 
 import { run } from '@cycle/core'
 import { makeDOMDriver, button, p, h } from '@cycle/dom'
@@ -12,14 +12,14 @@ const intent = (DOM) =>
 
 const model = (actions) =>
   [
-    State.find()
+    taskspending.find()
       .map((res) => res.length),
     actions.more$
-      .map((n) => ['state', 'insert', { value: 'click' }])
+      .map((n) => ['taskspending', 'insert', { value: 'click' }])
   ]
 
-const view = (state$) =>
-  state$.map((n) =>
+const view = (taskspending$) =>
+  taskspending$.map((n) =>
     h('main', [
       p(`You have clicked the button ${n} times`),
       button('Click Me!')
@@ -27,14 +27,14 @@ const view = (state$) =>
   )
 
 const main = (sources) => {
-  const [state$, mongoRequests$] = model(intent(sources.DOM))
-  return { DOM: view(state$), mongo: mongoRequests$ }
+  const [taskspending$, mongoRequests$] = model(intent(sources.DOM))
+  return { DOM: view(taskspending$), mongo: mongoRequests$ }
 }
 
 Meteor.startup(() => {
   const drivers = {
     DOM: makeDOMDriver('#app'),
-    mongo: makeMongoDriver(State)
+    mongo: makeMongoDriver(taskspending)
   }
   run(main, drivers)
 })
